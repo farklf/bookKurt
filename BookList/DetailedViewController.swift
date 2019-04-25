@@ -15,6 +15,7 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var bookEtagLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
     
+    var viewModel: ViewModel!
     
     var kind: String!
     var id:   String!
@@ -24,16 +25,16 @@ class DetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bookKindLabel.text = kind
-        bookIdLabel.text = id
-        bookEtagLabel.text = etag
+        bookKindLabel.text = viewModel.currentBook.kind
+        bookIdLabel.text = viewModel.currentBook.id
+        bookEtagLabel.text = viewModel.currentBook.etag
         
         
         
         
-        let url = URL(string: thumbnail)!
+        let url = URL(string: viewModel.currentBook.thumbnail)!
         
-        URLSession.shared.dataTask(with: url) { (dat, _, _) in
+    URLSession.shared.dataTask(with: url) { (dat, _, _) in
             
             if let data = dat {
                 

@@ -12,28 +12,18 @@ class BookListScreen: UIViewController {
 
     var books: [Book] = []
     
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var myBooks = [Book]() {
-    didSet {
-    //Dispatch Queue, is called GCD (Grand Central Dispatch) and is how we handle multithreading
-    //The main thread is where ALL UI changes must occur, this is asynchronous
-    DispatchQueue.main.async {
-    self.tableView.reloadData()
-    }
-    }
-    }
-    
     let searchController = UISearchController(searchResultsController: nil)
+    let viewModel = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         createSearchBar()
+        viewModel.delegate = (self as ViewModelDelegate)
         
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,7 +55,7 @@ extension BookListScreen: UITableViewDataSource, UITableViewDelegate {
 //        return self.books.count
   //        return myBooks.count
         
-        return myBooks.count
+        return viewModel.myBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
@@ -73,7 +63,7 @@ extension BookListScreen: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookCell
             
-              let  book = myBooks[indexPath.row]
+              let  book = viewModel.myBooks[indexPath.row]
             
             cell.bookKindLabel.text = book.kind
             cell.bookIdLabel.text = book.id
@@ -105,19 +95,15 @@ extension BookListScreen: UITableViewDataSource, UITableViewDelegate {
         
         
         //Select the correct beer from the array
-        let book = myBooks[indexPath.row]
+        let book  = viewModel.myBooks[indexPath.row]
+        viewModel.currentBook = book
         
+        let bkDetailVC = storyboard?.instantiateViewController(withIdentifier: "DetailedViewController") as! DetailedViewController
         
-        //pass in the beer to the detail VC
-         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailedViewController") as! DetailedViewController
-         
-         detailVC.kind = book.kind
-         detailVC.id = book.id
-         detailVC.etag = book.etag
-         detailVC.thumbnail = book.thumbnail
+        bkDetailVC.viewModel = viewModel
          
          //present the detail VC
-         self.navigationController?.pushViewController(detailVC, animated: true)
+         self.navigationController?.pushViewController(bkDetailVC, animated: true)
         
         
         
@@ -129,14 +115,24 @@ extension BookListScreen: UITableViewDataSource, UITableViewDelegate {
 
 extension BookListScreen: UISearchResultsUpdating {
     
-    
     func updateSearchResults(for searchController: UISearchController) {
         
-        BookService.shared.getBooks(viewModel: searchController.searchBar.text?.replacingOccurrences(of: " ", with: ""), completion: { [weak self] bk in
-            
-            if let books =  bk {self?.myBooks = books}
-            
-            }
-        )
+        
+        let searchText = searchController.searchBar.text!.replacingOccurrences(of: " ", with: "")
+        
+        viewModel.get(books: searchText)
     }
+    
+}
+extension BookListScreen: ViewModelDelegate{
+    
+    func updateView() {
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    
 }

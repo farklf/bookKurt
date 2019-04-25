@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02731A05226E561100F58468 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02731A04226E561100F58468 /* BookViewModel.swift */; };
 		027B8F2322650F0500398AA7 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027B8F2222650F0500398AA7 /* DetailedViewController.swift */; };
 		0288A7842266248500F2335E /* bookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288A7832266248500F2335E /* bookService.swift */; };
 		0288A7862266260300F2335E /* bookApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0288A7852266260300F2335E /* bookApi.swift */; };
@@ -16,11 +17,11 @@
 		028DCBE82263ABF700D32BAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 028DCBE62263ABF700D32BAE /* LaunchScreen.storyboard */; };
 		028DCBF22263ACAE00D32BAE /* BookListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DCBF12263ACAE00D32BAE /* BookListScreen.swift */; };
 		028DCBF42263B09B00D32BAE /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DCBF32263B09B00D32BAE /* BookCell.swift */; };
-		028DCBF62263B2C500D32BAE /* viewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DCBF52263B2C500D32BAE /* viewModel.swift */; };
 		028DCBF82263D02400D32BAE /* BookSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DCBF72263D02400D32BAE /* BookSerialization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02731A04226E561100F58468 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		027B8F2222650F0500398AA7 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		0288A7832266248500F2335E /* bookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookService.swift; sourceTree = "<group>"; };
 		0288A7852266260300F2335E /* bookApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookApi.swift; sourceTree = "<group>"; };
@@ -32,7 +33,6 @@
 		028DCBE92263ABF700D32BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		028DCBF12263ACAE00D32BAE /* BookListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListScreen.swift; sourceTree = "<group>"; };
 		028DCBF32263B09B00D32BAE /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
-		028DCBF52263B2C500D32BAE /* viewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewModel.swift; sourceTree = "<group>"; };
 		028DCBF72263D02400D32BAE /* BookSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSerialization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,9 +74,9 @@
 				028DCBE42263ABF700D32BAE /* Assets.xcassets */,
 				028DCBE62263ABF700D32BAE /* LaunchScreen.storyboard */,
 				028DCBE92263ABF700D32BAE /* Info.plist */,
-				028DCBF52263B2C500D32BAE /* viewModel.swift */,
 				028DCBF72263D02400D32BAE /* BookSerialization.swift */,
 				0288A7832266248500F2335E /* bookService.swift */,
+				02731A04226E561100F58468 /* BookViewModel.swift */,
 				0288A7852266260300F2335E /* bookApi.swift */,
 			);
 			path = BookList;
@@ -153,12 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				028DCBF62263B2C500D32BAE /* viewModel.swift in Sources */,
 				028DCBF42263B09B00D32BAE /* BookCell.swift in Sources */,
 				027B8F2322650F0500398AA7 /* DetailedViewController.swift in Sources */,
 				028DCBF22263ACAE00D32BAE /* BookListScreen.swift in Sources */,
 				0288A7842266248500F2335E /* bookService.swift in Sources */,
 				0288A7862266260300F2335E /* bookApi.swift in Sources */,
+				02731A05226E561100F58468 /* BookViewModel.swift in Sources */,
 				028DCBF82263D02400D32BAE /* BookSerialization.swift in Sources */,
 				028DCBDE2263ABF600D32BAE /* AppDelegate.swift in Sources */,
 			);

@@ -14,12 +14,12 @@ final class BookService{
     private init () {}
     static let shared = BookService()
     
-    func getBooks(viewModel: String?, completion: @escaping BookHandler){
+    func getBooks(book: String?, completion: @escaping BookHandler){
         
         var myBooks = [Book]()
         
         
-        guard let url = URL(string: bookAPI.bookSearchURL(from: viewModel!)) else {
+        guard let url = URL(string: bookAPI.bookSearchURL(from: book!)) else {
             
             completion([])
             print("Bad URL For Books")
@@ -50,8 +50,8 @@ final class BookService{
                     
                     for bookDict in books {
                         
-                        let viewModel = try Book(with: bookDict)
-                        myBooks.append(viewModel!)
+                        let book = try Book(with: bookDict)
+                        myBooks.append(book!)
                         
                     }
                     

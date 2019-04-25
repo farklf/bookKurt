@@ -26,6 +26,7 @@ class Book: Decodable{
     var etag: String
     var thumbnail: String!
     
+
     //NOTE: init with a question mark means that it MAY fail, & if it does, throw an error
     init?(with json: [String:Any]) throws {
         
